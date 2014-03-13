@@ -1,3 +1,0 @@
-# Working from:
-* [Google Calendar API and Ruby on Rails](http://blog.baugues.com/google-calendar-api-oauth2-and-ruby-on-rails)
-* [http://jonathanotto.com/blog/google_oauth2_api_quick_tutorial.html](http://jonathanotto.com/blog/google_oauth2_api_quick_tutorial.html)
