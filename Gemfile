@@ -45,3 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'haml-rails'
+gem 'figaro'
+gem 'oauth2'
