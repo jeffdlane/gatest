@@ -46,4 +46,4 @@ end
 
 gem 'haml-rails'
 gem 'figaro'
-gem 'oauth2'
+gem 'omniauth-google-oauth2'
