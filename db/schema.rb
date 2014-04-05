@@ -11,9 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313023225) do
+ActiveRecord::Schema.define(version: 20140325225238) do
 
   create_table "accounts", force: true do |t|
+    t.string   "refresh_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
     t.string   "refresh_token"
     t.datetime "created_at"
     t.datetime "updated_at"
