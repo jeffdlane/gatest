@@ -1,10 +1,10 @@
 %h1 All Accounts
 = link_to "Auth with Google", '/auth/google_oauth2'
 %table
-  %tr
-    / %th Email
-    %th Refresh Token
-  - @account.each do |account|
-    %tr
-      / %td= account.email
-      %td= account.refresh_token
+  / %tr
+  /   / %th Email
+  /   %th Refresh Token
+  / - @account.each do |account|
+  /   %tr
+  /     / %td= account.email
+  /     %td= account.refresh_token

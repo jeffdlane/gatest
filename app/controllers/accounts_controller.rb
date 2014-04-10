@@ -15,11 +15,17 @@ class AccountsController < ApplicationController
     redirect_to :accounts
   end
 
-  def do_list
-    raise current_account.client.execute(
+  def index
+    @accounts =  current_account.client.execute(
       api_method: current_account.analytics.management.accounts.list,
       parameters: {},
-      headers: {'Content-Type' => 'application/json'}).inspect 
+      headers: {'Content-Type' => 'application/json'})
+
+    # raise current_account.client.execute(
+      # api_method: current_account.analytics.management.accounts.list,
+      # parameters: {},
+      # headers: {'Content-Type' => 'application/json'}).inspect 
+
   end
      
   def do_upload
@@ -30,7 +36,7 @@ class AccountsController < ApplicationController
       'mimeType'  => 'application/octet-stream',
       'resumable' => false
     }
-    raise @client.execute(
+    @client.execute(
       api_method: @analytics.management.daily_uploads.upload,
       parameters: { 'uploadType'          => 'multipart',
                     'appendNumber'        => 1,
