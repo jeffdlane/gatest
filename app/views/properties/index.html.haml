@@ -1,0 +1,8 @@
+%h1 Properties#index
+%p Find me in app/views/properties/index.html.haml
+
+- @properties.each do |prop|
+  .media
+    .media-body
+      %h4.media-heading
+        %p= link_to prop.title, prop
