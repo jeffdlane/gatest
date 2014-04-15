@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405062115) do
+ActiveRecord::Schema.define(version: 20140413224349) do
 
   create_table "accounts", force: true do |t|
     t.string   "refresh_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "properties", force: true do |t|
+    t.string   "ga_property_id"
+    t.string   "custom_data_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
