@@ -1,9 +1,4 @@
 %h1 Add a New GA Property
 %p Find me in app/views/properties/new.html.haml
 
-= simple_form_for @property do |f|
-  /= f.error_messages
-  = f.input :property_name
-  = f.input :ga_property_id, :hint => "should look like 'UA-XXXXXXX-XX'"
-  = f.input :custom_data_id
-  = f.button :submit
+= render partial: 'form'

@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   def index
-    @properties = Property.all
+    @properties = current_user.properties.all if current_user
   end
 
   def new
@@ -19,6 +19,18 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update_attributes(properties_params)
+      flash[:notice] = "Property was updated."
+      redirect_to @property
+    else
+      flash[:error] = "Property was not updated."
+      render :edit
+    end
   end
 
   def show

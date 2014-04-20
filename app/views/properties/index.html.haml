@@ -1,8 +1,15 @@
-%h1 Properties#index
-%p Find me in app/views/properties/index.html.haml
+.page-header
+  %h1 Properties
 
-- @properties.each do |prop|
-  .media
-    .media-body
-      %h4.media-heading
-        %p= link_to prop.title, prop
+- if current_user.nil?
+  %p There's no Properties to list
+  = link_to "Sign up", new_user_registration_path
+  or
+  = link_to "Login", new_user_session_path
+- else
+  - @properties.each do |p|
+    .media
+      .media-body
+        %h4.media-heading
+          .well.well-sm
+            = link_to p.property_name, p
