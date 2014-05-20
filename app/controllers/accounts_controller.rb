@@ -16,10 +16,10 @@ class AccountsController < ApplicationController
   end
 
   def index
-    @accounts =  current_account.client.execute(
-      api_method: current_account.analytics.management.accounts.list,
-      parameters: {},
-      headers: {'Content-Type' => 'application/json'})
+    # @accounts =  current_account.client.execute(
+    #   api_method: current_account.analytics.management.accounts.list,
+    #   parameters: {},
+    #   headers: {'Content-Type' => 'application/json'})
 
     # raise current_account.client.execute(
       # api_method: current_account.analytics.management.accounts.list,

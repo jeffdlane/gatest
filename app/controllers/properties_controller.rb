@@ -1,3 +1,5 @@
+require 'csv'
+
 class PropertiesController < ApplicationController
   def index
     @properties = current_user.properties.all if current_user
@@ -31,6 +33,7 @@ class PropertiesController < ApplicationController
       flash[:error] = "Property was not updated."
       render :edit
     end
+    CSV.new(params[:property][:data])
   end
 
   def show
@@ -39,6 +42,14 @@ class PropertiesController < ApplicationController
 
   def delete
   end
+
+
+def upload
+  uploaded_io = params[:property][:data]
+  File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+    file.write(uploaded_io.read)
+  end
+end
 
 private
   

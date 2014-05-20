@@ -1,0 +1,26 @@
+"Keyword report (Mar 23, 2014-Apr 21, 2014)"
+Keyword state,Keyword,Campaign,Ad group,Status,Max. CPC,Impressions,Clicks,Cost
+enabled,lodging sunriver,Sunriver / Search,Sunriver Lodging,eligible,1.05,470,5,4.54
+enabled,sun river lodging,Sunriver / Search,Sunriver Lodging,eligible,1.44,560,7,8.04
+enabled,sunriver houses,Sunriver / Search,Sunriver Homes,eligible,1.50,458,12,15.49
+enabled,sunriver house,Sunriver / Search,Sunriver Homes,eligible,1.21,433,9,9.36
+enabled,sunriver cabin rentals oregon,Sunriver / Search,Sunriver Cabins,eligible,1.04,192,6,6.05
+enabled,sunriver vacation homes,Sunriver / Search,Sunriver Vacation,below first page bid (First page cpc : 2.00),0.64,34,8,2.84
+enabled,sunriver vacation,Sunriver / Search,Sunriver Vacation,eligible,0.76,174,17,6.26
+enabled,sun river vacation,Sunriver / Search,Sunriver Vacation,below first page bid (First page cpc : 1.75),1.67,983,16,22.82
+enabled,sunriver oregon vacation,Sunriver / Search,Sunriver Vacation,eligible,0.84,498,14,10.12
+enabled,sunriver vacation properties,Sunriver / Search,Sunriver Vacation,eligible,1.06,465,39,36.62
+enabled,where is sunriver oregon,Sunriver / Search,Sunriver Vacation,eligible,1.07,4906,129,122.84
+enabled,[sunriver oregon rentals],Sunriver / Search,Sunriver Rental / Exact Match,eligible,0.90,532,6,4.76
+enabled,[sunriver lodge rentals],Sunriver / Search,Sunriver Rental / Exact Match,eligible,0.90,26,5,3.06
+enabled,[sunriver long term rentals],Sunriver / Search,Sunriver Rental / Exact Match,eligible,0.98,34,9,5.28
+enabled,sunriver house rental,Sunriver / Search,Sunriver Home Rentals,eligible,1.39,664,17,20.89
+enabled,sunriver oregon home rentals,Sunriver / Search,Sunriver Home Rentals,eligible,1.51,1782,37,49.08
+enabled,sunriver resort home rentals,Sunriver / Search,Sunriver Home Rentals,eligible,1.06,882,19,18.26
+enabled,oregon sunriver rental homes,Sunriver / Search,Sunriver Home Rentals,eligible,1.10,539,15,14.35
+enabled,[sunriver rentals],Sunriver / Search,[Sunriver Rental] / Exact Match,eligible,1.37,4242,165,203.01
+enabled,[sunriver rental],Sunriver / Search,[Sunriver Rental] / Exact Match,eligible,1.77,163,10,15.11
+Total - filtered, --, --, --, --, --,18037,545,578.78
+Total - Search, --, --, --, --, --,26981,637,666.82
+Total - Display Network, --, --, --, --, --,0,0,0.00
+Total, --, --, --, --, --,26981,637,666.82

@@ -9,3 +9,7 @@
 = link_to "Edit Property", edit_property_path
 %p
 = link_to "Upload Cost Data", '#', { :class => 'btn btn-success' }
+%p
+= form_for @property do |f|
+  = f.file_field :data
+  = f.button :submit, :class => "btn btn-success"
