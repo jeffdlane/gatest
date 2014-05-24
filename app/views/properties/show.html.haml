@@ -8,7 +8,7 @@
 %p
 = link_to "Edit Property", edit_property_path
 %p
-= link_to "Upload Cost Data", '#', { :class => 'btn btn-success' }
+= link_to "Upload Cost Data", upload_new_path, { :class => 'btn btn-success' }
 %p
 = form_for @property do |f|
   = f.file_field :data

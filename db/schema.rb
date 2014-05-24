@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417015001) do
+ActiveRecord::Schema.define(version: 20140520195605) do
 
   create_table "accounts", force: true do |t|
     t.string   "refresh_token"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20140417015001) do
   end
 
   add_index "properties", ["user_id"], name: "index_properties_on_user_id"
+
+  create_table "sources", force: true do |t|
+    t.string   "name"
+    t.string   "ga_source"
+    t.string   "ga_medium"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "refresh_token"

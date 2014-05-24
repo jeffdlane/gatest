@@ -7,9 +7,12 @@ class String
     words.join
   end
 
-  def bingify
-    words = self.camel_case
-    words.gsub!(/(Spend|Impr\.)/, 'Spend' => 'Cost', 'Impr.' => 'impressions')
+  def transform
+    @source = Source.find(param[:source_id]) 
+    case @source.name
+    when "bing"
+      self.gsub!(/(Spend|Impr\.)/, 'Spend' => 'Cost', 'Impr.' => 'impressions')
+    end
   end
 end
  
@@ -38,17 +41,21 @@ module GoogleAnalytics
  
     CSV::HeaderConverters[:best_try] = lambda do |header|
       valid_header = VALID_HEADERS.find do |valid|
-        [header.camel_case, "ad #{header}".camel_case].include?(valid)
+        [header.camel_case.transform, "ad #{header}".camel_case.transform].include?(valid)
       end
       "ga:#{valid_header}" if valid_header
     end
     
     def initialize(file)
+      @source = Source.find(params[:source_id])
       @table = CSV.new(file.read, headers:            true,
                                   header_converters:  :best_try,
                                   converters:         :all,
                                   skip_lines:         SKIP_LINES).read.by_col.delete_if { |k,v| k.nil? }
+      @table['ga:source'] = @source.ga_source
+      @table['ga:medium'] = @source.ga_medium
     end
+
     def to_s
       @table.to_s
     end

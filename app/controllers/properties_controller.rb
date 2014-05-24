@@ -26,6 +26,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
+    @property.user_id = current_user.id
     if @property.update_attributes(properties_params)
       flash[:notice] = "Property was updated."
       redirect_to @property
