@@ -41,7 +41,15 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  def delete
+  def destroy
+    @property = Property.find(params[:id])
+    if @property.destroy
+      flash[:notice] = "Property deleted."
+      redirect_to properties_path
+    else
+      flash[:error] = "There was a problem deleting the Property"
+      render :show
+    end
   end
 
 

@@ -13,4 +13,5 @@
         %h4.media-heading
           .well.well-sm
             = link_to p.property_name, p
+            = "(#{p.ga_property_id})"
     = link_to "New Property", new_property_path,  { :class => 'btn btn-success' }

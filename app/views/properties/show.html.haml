@@ -1,15 +1,41 @@
-%h2= @property.property_name
-%p
-  %b Property Id: #{@property.ga_property_id}
-%p
-  %b Custom Data Source Id: #{@property.custom_data_id}
-%p
-  %b User Email: #{@property.user.email}
-%p
-= link_to "Edit Property", edit_property_path
-%p
-= link_to "Upload Cost Data", upload_new_path, { :class => 'btn btn-success' }
-%p
-= form_for @property do |f|
-  = f.file_field :data
-  = f.button :submit, :class => "btn btn-success"
+/ .panel.panel-default
+/   .panel-heading
+/     .panel-title 
+/       %b Property Name: 
+/       = @property.property_name
+/   .panel-body 
+/     %p
+/       %b GA Property Id: #{@property.ga_property_id}
+/     %p
+/       %b Custom Data Source Id: #{@property.custom_data_id}
+/     %p
+/       %b User Email: #{@property.user.email}
+/     %p
+/       = link_to "Edit Property", edit_property_path, :class => "btn btn-default"
+
+.well
+  %h4= @property.property_name
+  %p
+    %b GA Property Id: #{@property.ga_property_id}
+  %p
+    %b Custom Data Source Id: #{@property.custom_data_id}
+  %p
+    = link_to "Edit Property", edit_property_path, :class => "btn btn-default"
+
+.panel.panel-default
+  .panel-heading
+    .panel-title 
+      %b Upload File
+  .panel-body 
+    = render partial: '/upload/form', locals: {property: @property}
+
+%button{"data toggle" => "modal", "data-target" => "#myModal", :class => "btn btn-primary btn-lg"} Modal Button
+
+.modal.fade{"id" => "myModal", "role" => "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{"type" => "button", "class" => "close", "data-dismiss" => "modal", "aria-hidden" => "true"}
+        .modal-title Modal Title
+      .modal-body One Fine Body
+      .modal-footer Footer}

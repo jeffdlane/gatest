@@ -1,65 +1,41 @@
 require 'csv'
  
-class String
-  def camel_case
-    words = self.split.map(&:capitalize)
-    words.first.downcase!
-    words.join
-  end
-
-  def transform
-    @source = Source.find(param[:source_id]) 
-    case @source.name
-    when "bing"
-      self.gsub!(/(Spend|Impr\.)/, 'Spend' => 'Cost', 'Impr.' => 'impressions')
-    end
-  end
-end
- 
 module GoogleAnalytics
   class CSVConverter
-    # https://developers.google.com/analytics/devguides/platform/cost-data-import#dims_mets
-    VALID_HEADERS = %w( source
-                        medium
-                        campaign
-                        adwordsCampaignId
-                        adGroup
-                        keyword
-                        adMatchedQuery
-                        adContent
-                        referralPath
-                        adwordsCriteriaId
-                        adSlot
-                        adSlotPosition
-                        adDisplayUrl
-                        adDestinationUrl
-                        adCost
-                        adClicks
-                        impressions )
- 
-    SKIP_LINES = /^Total|^"Keyword/
- 
-    CSV::HeaderConverters[:best_try] = lambda do |header|
-      valid_header = VALID_HEADERS.find do |valid|
-        [header.camel_case.transform, "ad #{header}".camel_case.transform].include?(valid)
-      end
-      "ga:#{valid_header}" if valid_header
-    end
-    
-    def initialize(file)
-      @source = Source.find(params[:source_id])
-      @table = CSV.new(file.read, headers:            true,
-                                  header_converters:  :best_try,
-                                  converters:         :all,
-                                  skip_lines:         SKIP_LINES).read.by_col.delete_if { |k,v| k.nil? }
-      @table['ga:source'] = @source.ga_source
-      @table['ga:medium'] = @source.ga_medium
-    end
 
-    def to_s
-      @table.to_s
+    def self.convert(string,source,medium)
+      CSV::HeaderConverters[:from_hash] = lambda do |header|
+        header_conversions[header]
+      end
+      table = CSV.new(string, skip_lines:         skip_lines,
+                              headers:            true,
+                              header_converters:  :from_hash,
+                              converters:         :all).read
+      table.by_col.delete_if { |k,v| k.nil? }
+      table['ga:source'] = source
+      table['ga:medium'] = medium
+      table.to_s
     end
   end
+
+  class BingCSVConverter < CSVConverter
+
+    def self.skip_lines
+
+    end
+
+    def self.header_conversions
+      { 'Spend' => 'ga:adCost',
+        'Impr.' => 'ga:impressions',
+        'Campaign' => 'ga:campaign',
+        'Ad group' => 'ga:adGroup',
+        'Keyword' => 'ga:keyword',
+        'Clicks' => 'ga:adClicks',
+      }
+    end
+  end
+
+puts GoogleAnalytics::ExampleCSVConverter.convert(open('in.csv').read, 'bing')
+
 end
  
-puts GA::CSV.new(open('keywords.csv')).read
